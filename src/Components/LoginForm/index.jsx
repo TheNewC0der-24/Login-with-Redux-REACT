@@ -35,6 +35,10 @@ const LoginForm = () => {
         setShowPassword((show) => !show);
     };
 
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
     return (
         <>
             <Box p={2} sx={{ display: 'flex', justifyContent: "center", margin: 'auto', alignItems: 'center', marginTop: "4rem" }} maxWidth="md">
@@ -47,7 +51,7 @@ const LoginForm = () => {
                                     className={styles.img}
                                     src={login}
                                     autoPlay
-                                    loop
+                                // loop
                                 />
                             </Grid>
 
@@ -66,7 +70,8 @@ const LoginForm = () => {
                                                 fullWidth
                                                 size='small'
                                                 label='Name'
-                                                mb={3}
+                                                value={name}
+                                                onChange={(e) => setName(e.target.value)}
                                             />
                                         </Stack>
                                         <Stack mb={2}>
@@ -75,6 +80,8 @@ const LoginForm = () => {
                                                 size='small'
                                                 type='email'
                                                 label='Email'
+                                                value={email}
+                                                onChange={(e) => setEmail(e.target.value)}
                                             />
                                         </Stack>
                                         <Stack>
@@ -83,6 +90,8 @@ const LoginForm = () => {
                                                 size='small'
                                                 type={showPassword ? 'text' : 'password'}
                                                 label='Password'
+                                                value={password}
+                                                onChange={(e) => setPassword(e.target.value)}
                                                 InputProps={{
                                                     endAdornment: (
                                                         <InputAdornment position='end'>
@@ -98,6 +107,7 @@ const LoginForm = () => {
                                         <Box mt={2}>
                                             <Button
                                                 // fullWidth
+                                                type='submit'
                                                 className={styles.btn}
                                                 variant='contained'
                                             >
