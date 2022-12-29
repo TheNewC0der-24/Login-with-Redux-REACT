@@ -3,11 +3,11 @@ import React, { useState } from 'react';
 import styles from './LoginForm.module.css';
 
 import {
-    Container,
     Box,
     Stack,
     Card,
     CardContent,
+    CardMedia,
     Grid,
     Typography,
     TextField,
@@ -21,9 +21,11 @@ import {
 import { Icon } from '@iconify/react';
 import eyeFill from '@iconify/icons-eva/eye-fill';
 import eyeOffFill from '@iconify/icons-eva/eye-off-fill';
+import BoltIcon from '@mui/icons-material/Bolt';
 
 // Images
-import login from '../../assets/Images/login.svg'
+// import login from '../../assets/Images/login.svg'
+import login from '../../assets/Images/login.mp4'
 
 const LoginForm = () => {
 
@@ -35,70 +37,79 @@ const LoginForm = () => {
 
     return (
         <>
-            <Box sx={{ display: 'flex', justifyContent: "center", margin: 'auto', alignItems: 'center' }} maxWidth="md">
-                <Stack p={5}>
-                    <Box mb={5}>
-                        <Typography mb={1} variant="h4" color="primary">Login Here</Typography>
-                        <Divider />
-                    </Box>
-                    <Grid container spacing={3}>
-                        <Grid item xs={12} sm={12} md={5} lg={5} sx={{ margin: 'auto' }}>
-                            <Box>
-                                <img src={login} className={styles.img} alt="login" />
-                            </Box>
-                        </Grid>
+            <Box p={2} sx={{ display: 'flex', justifyContent: "center", margin: 'auto', alignItems: 'center', marginTop: "4rem" }} maxWidth="md">
+                <Card sx={{ bgcolor: "#F4F5F7" }}>
+                    <CardContent>
+                        <Grid container spacing={3}>
+                            <Grid item xs={12} sm={12} md={6} lg={6} sx={{ margin: 'auto' }}>
+                                <CardMedia
+                                    component='video'
+                                    className={styles.img}
+                                    src={login}
+                                    autoPlay
+                                    loop
+                                />
+                            </Grid>
 
-                        <Grid item xs={12} sm={12} md={7} lg={7} sx={{ margin: 'auto' }}>
-                            <form>
-                                <Box mt={5} mb={3}>
-                                    <Stack mb={2}>
-                                        <TextField
-                                            fullWidth
-                                            size='small'
-                                            label='Name'
-                                            mb={3}
-                                        />
-                                    </Stack>
-                                    <Stack mb={2}>
-                                        <TextField
-                                            fullWidth
-                                            size='small'
-                                            type='email'
-                                            label='Email'
-                                        />
-                                    </Stack>
-                                    <Stack>
-                                        <TextField
-                                            fullWidth
-                                            size='small'
-                                            type={showPassword ? 'text' : 'password'}
-                                            label='Password'
-                                            InputProps={{
-                                                endAdornment: (
-                                                    <InputAdornment position='end'>
-                                                        <IconButton onClick={handleShowPassword} edge="end">
-                                                            <Icon icon={showPassword ? eyeFill : eyeOffFill} />
-                                                        </IconButton>
-                                                    </InputAdornment>
-                                                )
-                                            }}
-                                        />
-                                    </Stack>
-
-                                    <Box mt={2}>
-                                        <Button
-                                            fullWidth
-                                            className={styles.btn}
-                                            variant='contained'
-                                        >
-                                            Submit
-                                        </Button>
+                            <Grid item xs={12} sm={12} md={6} lg={6} sx={{ margin: 'auto' }}>
+                                <Box mb={5}>
+                                    <Box mb={1} sx={{ display: "flex" }}>
+                                        <Typography variant="h4" color="primary"><BoltIcon /></Typography>
+                                        <Typography variant="h4" color="primary">Login Here</Typography>
                                     </Box>
+                                    <Divider />
                                 </Box>
-                            </form>
+                                <form>
+                                    <Box mt={5} mb={3}>
+                                        <Stack mb={2}>
+                                            <TextField
+                                                fullWidth
+                                                size='small'
+                                                label='Name'
+                                                mb={3}
+                                            />
+                                        </Stack>
+                                        <Stack mb={2}>
+                                            <TextField
+                                                fullWidth
+                                                size='small'
+                                                type='email'
+                                                label='Email'
+                                            />
+                                        </Stack>
+                                        <Stack>
+                                            <TextField
+                                                fullWidth
+                                                size='small'
+                                                type={showPassword ? 'text' : 'password'}
+                                                label='Password'
+                                                InputProps={{
+                                                    endAdornment: (
+                                                        <InputAdornment position='end'>
+                                                            <IconButton onClick={handleShowPassword} edge="end">
+                                                                <Icon icon={showPassword ? eyeFill : eyeOffFill} />
+                                                            </IconButton>
+                                                        </InputAdornment>
+                                                    )
+                                                }}
+                                            />
+                                        </Stack>
+
+                                        <Box mt={2}>
+                                            <Button
+                                                // fullWidth
+                                                className={styles.btn}
+                                                variant='contained'
+                                            >
+                                                Submit
+                                            </Button>
+                                        </Box>
+                                    </Box>
+                                </form>
+                            </Grid>
                         </Grid>
-                    </Grid>
-                </Stack>
+                    </CardContent>
+                </Card>
             </Box>
         </>
     )
