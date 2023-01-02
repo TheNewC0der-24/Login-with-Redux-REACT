@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { useDispatch } from 'react-redux';
+
 import {
     Box,
     Button,
@@ -9,7 +11,18 @@ import {
     Typography,
 } from '@mui/material';
 
+import { logout } from '../../Features/userSlice';
+
 const Home = () => {
+
+    const dispatch = useDispatch();
+
+    const handleLogout = (e) => {
+        e.preventDefault();
+
+        dispatch(logout());
+    }
+
     return (
         <>
             <Box p={2} sx={{ display: 'flex', justifyContent: "center", margin: 'auto', alignItems: 'center', marginTop: "4rem" }} maxWidth="md">
@@ -26,6 +39,7 @@ const Home = () => {
                         <Button
                             fullWidth
                             variant="contained"
+                            onClick={(e) => handleLogout(e)}
                         >
                             Logout
                         </Button>
