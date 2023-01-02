@@ -3,6 +3,7 @@ import './App.css';
 
 // Component
 import LoginForm from './Components/LoginForm';
+import Home from './Components/Home';
 
 import {
   Box,
@@ -11,7 +12,13 @@ import {
   Typography,
 } from '@mui/material';
 
+import { useSelector } from 'react-redux';
+import { selectUser } from './Features/userSlice';
+
 function App() {
+
+  const user = useSelector(selectUser);
+
   return (
     <>
       <Box>
@@ -28,7 +35,13 @@ function App() {
         </AppBar>
       </Box>
 
-      <LoginForm />
+      {
+        user ? (
+          <Home />
+        ) : (
+          <LoginForm />
+        )
+      }
     </>
   );
 }

@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 
 import styles from './LoginForm.module.css';
 
+import { useDispatch } from 'react-redux';
+import { login } from '../../Features/userSlice';
+
 import {
     Box,
     Stack,
@@ -25,7 +28,7 @@ import BoltIcon from '@mui/icons-material/Bolt';
 
 // Images
 // import login from '../../assets/Images/login.svg'
-import login from '../../assets/Images/login.mp4'
+import loginImg from '../../assets/Images/login.mp4'
 
 const LoginForm = () => {
 
@@ -39,6 +42,21 @@ const LoginForm = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
+    const dispatch = useDispatch();
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        dispatch(login({
+            name: name,
+            email: email,
+            password: password,
+
+            loggedIn: true,
+        })
+        );
+    }
+
     return (
         <>
             <Box p={2} sx={{ display: 'flex', justifyContent: "center", margin: 'auto', alignItems: 'center', marginTop: "4rem" }} maxWidth="md">
@@ -49,7 +67,7 @@ const LoginForm = () => {
                                 <CardMedia
                                     component='video'
                                     className={styles.img}
-                                    src={login}
+                                    src={loginImg}
                                     autoPlay
                                     loop
                                 />
@@ -63,7 +81,7 @@ const LoginForm = () => {
                                     </Box>
                                     <Divider />
                                 </Box>
-                                <form>
+                                <form onSubmit={(e) => handleSubmit(e)}>
                                     <Box mt={5} mb={3}>
                                         <Stack mb={2}>
                                             <TextField
