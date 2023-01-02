@@ -51,7 +51,7 @@ const LoginForm = () => {
                                     className={styles.img}
                                     src={login}
                                     autoPlay
-                                // loop
+                                    loop
                                 />
                             </Grid>
 
