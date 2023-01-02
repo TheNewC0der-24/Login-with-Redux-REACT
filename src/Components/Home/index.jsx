@@ -1,6 +1,9 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 import { useDispatch } from 'react-redux';
+
+import { logout, selectUser } from '../../Features/userSlice';
 
 import {
     Box,
@@ -11,9 +14,9 @@ import {
     Typography,
 } from '@mui/material';
 
-import { logout } from '../../Features/userSlice';
-
 const Home = () => {
+
+    const user = useSelector(selectUser);
 
     const dispatch = useDispatch();
 
@@ -29,10 +32,10 @@ const Home = () => {
                 <Card sx={{ bgcolor: "#F4F5F7" }}>
                     <CardContent>
                         <Typography sx={{ fontWeight: "bold" }} variant="h5">
-                            Welcome <span style={{ color: "#1976d2" }}>Name</span>!
+                            Welcome <span style={{ color: "#1976d2" }}>{user.name}</span>!
                         </Typography>
                         <Typography variant="subtitle1">
-                            𝐇𝐞𝐥𝐥𝐨 𝐭𝐡𝐞𝐫𝐞, 𝐟𝐞𝐥𝐥𝐨𝐰 <span style={{ color: "#1976d2" }}>&lt;𝚍𝚎𝚟𝚎𝚕𝚘𝚙𝚎𝚛𝚜 /&gt;</span>!
+                            You are logged in.
                         </Typography>
                     </CardContent>
                     <CardActions>
