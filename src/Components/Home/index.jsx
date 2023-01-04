@@ -1,18 +1,18 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import styles from './Home.module.css';
 
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { logout, selectUser } from '../../Features/userSlice';
 
 import {
     Box,
     Button,
-    Card,
-    CardActions,
-    CardContent,
+    Grid,
     Typography,
 } from '@mui/material';
+
+import welcomeImg from '../../assets/Images/profile.png';
 
 const Home = () => {
 
@@ -28,26 +28,29 @@ const Home = () => {
 
     return (
         <>
-            <Box p={2} sx={{ display: 'flex', justifyContent: "center", margin: 'auto', alignItems: 'center', marginTop: "4rem" }} maxWidth="md">
-                <Card sx={{ bgcolor: "#F4F5F7" }}>
-                    <CardContent>
-                        <Typography sx={{ fontWeight: "bold" }} variant="h5">
+            <Box mt={5} p={2} maxWidth="lg" sx={{ display: 'flex', justifyContent: "center", marginX: "auto" }}>
+                <Grid container spacing={2}>
+                    <Grid item xs={12} sm={12} md={6} lg={6} sx={{ margin: "auto" }}>
+                        <img src={welcomeImg} alt="welcome" className={styles.img} />
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={6} lg={6} sx={{ margin: "auto" }}>
+                        <Typography sx={{ fontWeight: "bold" }} variant="h3">
                             Welcome <span style={{ color: "#1976d2" }}>{user.name}</span>!
                         </Typography>
-                        <Typography variant="subtitle1">
+                        <Typography variant="h5">
                             You are logged in.
                         </Typography>
-                    </CardContent>
-                    <CardActions>
-                        <Button
-                            fullWidth
-                            variant="contained"
-                            onClick={(e) => handleLogout(e)}
-                        >
-                            Logout
-                        </Button>
-                    </CardActions>
-                </Card>
+                        <Box mt={2}>
+                            <Button
+                                // fullWidth
+                                variant="contained"
+                                onClick={(e) => handleLogout(e)}
+                            >
+                                Logout
+                            </Button>
+                        </Box>
+                    </Grid>
+                </Grid>
             </Box>
         </>
     )
