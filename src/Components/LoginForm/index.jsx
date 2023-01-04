@@ -86,6 +86,7 @@ const LoginForm = () => {
                                         <Stack mb={2}>
                                             <TextField
                                                 fullWidth
+                                                required
                                                 size='small'
                                                 label='Name'
                                                 value={name}
@@ -95,6 +96,7 @@ const LoginForm = () => {
                                         <Stack mb={2}>
                                             <TextField
                                                 fullWidth
+                                                required
                                                 size='small'
                                                 type='email'
                                                 label='Email'
@@ -105,6 +107,7 @@ const LoginForm = () => {
                                         <Stack>
                                             <TextField
                                                 fullWidth
+                                                required
                                                 size='small'
                                                 type={showPassword ? 'text' : 'password'}
                                                 label='Password'
@@ -128,6 +131,7 @@ const LoginForm = () => {
                                                 type='submit'
                                                 className={styles.btn}
                                                 variant='contained'
+                                                onSubmit={handleSubmit}
                                             >
                                                 Submit
                                             </Button>
